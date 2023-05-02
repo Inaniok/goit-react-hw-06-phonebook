@@ -4,7 +4,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { NoContacts } from './NoContacts/NoContacts';
-import { setLocalStorage, getLocalStorage } from './LocalStorage/LocalStorage';
+import { setLocalStorage, getLocalStorage } from '../utils/LocalStorage/LocalStorage';
 import { Wrapper, Title, ContactsTitle } from './App.styled';
 
 const LOC_STORAGE_KEY = 'contacts';
