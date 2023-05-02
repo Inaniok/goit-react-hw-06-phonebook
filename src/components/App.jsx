@@ -4,13 +4,30 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { NoContacts } from './NoContacts/NoContacts';
+import { setLocalStorage, getLocalStorage } from './LocalStorage/LocalStorage';
 import { Wrapper, Title, ContactsTitle } from './App.styled';
+
+const LOC_STORAGE_KEY = 'contacts';
 
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const storageValue = getLocalStorage(LOC_STORAGE_KEY);
+
+    this.setState({ contacts: storageValue });
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts.length !== contacts.length) {
+      setLocalStorage(LOC_STORAGE_KEY, contacts);
+    }
+  }
 
   handleFormSubmit = (newContacts) => {
     
